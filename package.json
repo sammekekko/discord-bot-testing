@@ -9,7 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.1",
+    "@distube/soundcloud": "^1.1.0",
+    "@distube/spotify": "^1.2.1",
+    "@distube/yt-dlp": "^1.0.2",
+    "discord-api-types": "^0.31.1",
+    "discord-player": "^5.2.2",
     "discord.js": "^13.6.0",
-    "dotenv": "^16.0.0"
+    "distube": "^3.3.4",
+    "dotenv": "^16.0.0",
+    "ffmpeg-static": "^4.4.1",
+    "opusscript": "^0.0.8"
   }
 }
