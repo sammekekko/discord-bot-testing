@@ -15,7 +15,7 @@ client.on("ready", () => {
 
 client.on("messageCreate", (message) => {
     if (message.content == "hej") {
-        message.reply("bog")
+        message.reply("bogs")
     }
 })
 
