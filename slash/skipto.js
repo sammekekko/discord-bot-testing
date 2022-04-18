@@ -1,19 +1,19 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 
 module.exports = {
-	data: new SlashCommandBuilder().setName("skipto").setDescription("Skips to a certain track #")
+	data: new SlashCommandBuilder().setName("skippatill").setDescription("Skippar till den dära bra låten #")
     .addNumberOption((option) => 
-        option.setName("tracknumber").setDescription("The track to skip to").setMinValue(1).setRequired(true)),
+        option.setName("låtnumret").setDescription("Låten har skippats till").setMinValue(1).setRequired(true)),
 	run: async ({ client, interaction }) => {
-		const queue = client.player.getQueue(interaction.guildId)
+		const queue = client.player.getQueue(interaction.guildId);
 
-		if (!queue) return await interaction.editReply("There are no songs in the queue")
+		if (!queue) return await interaction.editReply("Det finns inga låtar i fittkön");
 
-        const trackNum = interaction.options.getNumber("tracknumber")
+        const trackNum = interaction.options.getNumber("låtnumret");
         if (trackNum > queue.tracks.length)
-            return await interaction.editReply("Invalid track number")
-		queue.skipTo(trackNum - 1)
+            return await interaction.editReply("Men säg ett låtnummer som finns");
+		queue.skipTo(trackNum - 1);
 
-        await interaction.editReply(`Skipped ahead to track number ${trackNum}`)
+        await interaction.editReply(`Skippade till låtnummer: ${trackNum}`);
 	},
 }
