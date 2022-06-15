@@ -10,7 +10,7 @@ module.exports = {
     run: async ({ client, interaction }) => {
         const queue = client.player.getQueue(interaction.guildId)
         if (!queue || !queue.playing){
-            return await interaction.editReply("Det är inte fittlåtar i kön")
+            return await interaction.editReply("Det är inga fittlåtar i kön")
         }
 
         const totalPages = Math.ceil(queue.tracks.length / 10) || 1

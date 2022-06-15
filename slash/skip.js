@@ -8,13 +8,16 @@ module.exports = {
 
 		if (!queue) return await interaction.editReply("Det är inga låtar i kön")
 
-        const currentSong = queue.current
-
-		queue.skip()
-        await interaction.editReply({
-            embeds: [
-                new MessageEmbed().setDescription(`${currentSong.title} har skippats!`).setThumbnail(currentSong.thumbnail)
-            ]
-        })
+        try {
+            const currentSong = queue.current
+            queue.skip();
+            await interaction.editReply({
+                embeds: [
+                    new MessageEmbed().setDescription(`${currentSong.title} har skippats!`).setThumbnail(currentSong.thumbnail)
+                ]
+            })
+        } catch {
+            console.log("Error: Song not found");
+        }
 	},
 }
