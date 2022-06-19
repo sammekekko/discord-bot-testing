@@ -3,7 +3,7 @@ const utilityHandler = require("./utilities/utilityHandler.js");
 const { Player } = require("discord-player");
 const fs = require("fs");
 
-const TOKEN = 'OTY1Mjg0NDEzNzU3ODU3Nzky.GXg0yB.XiUuPPvmX9yV0ZA9O4AahzprZBoSYwrp89vWmI';
+const TOKEN = process.env.TOKEN;
 
 const LOAD_SLASH = process.argv[2] == "load";
 
