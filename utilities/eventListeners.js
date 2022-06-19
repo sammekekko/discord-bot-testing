@@ -13,9 +13,9 @@ module.exports.registerEvents = async (client) => {
                const buttonID = interaction.customId;
                if (! buttonID == "gayprocent") { await interaction.reply("Error i koden"); } 
 
-               const randomProcentage = Math.random(101);
+               const randomProcentage = Math.floor(Math.random() * 100) + 1;
 
-               await interaction.reply(`Du är ${randomProcentage.toString()}%`);
+               await interaction.reply(`Du är ${randomProcentage.toString()}% bög, gode gay`);
             }
             handleButton();
         } else if (interaction.isCommand()) {

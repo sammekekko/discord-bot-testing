@@ -27,7 +27,7 @@ data: new SlashCommandBuilder()
                     { name: 'Skriva muzik-kommandon?', value: '<#962063596844630098>'}
                 )
                 .setTimestamp()
-                .setAuthor({ name: `Framkallad av @${interaction.member}`, iconURL: interaction.user.displayAvatarURL(), url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"})
+                .setAuthor({ name: `Framkallad av ${interaction.member.user.tag}`, iconURL: interaction.user.displayAvatarURL(), url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"})
                 .setFooter({ text: 'Anus don demina, den bögigaste botten som någonsin existerat', iconURL: 'https://bloggar.aftonbladet.se/schlagerbloggen/files/2020/02/Bild-2020-02-16-kl.-16.34.00-705x1024.jpg'});
 
         await interaction.editReply({ ephemeral: false, embeds: [embed], components: [buttons]});
