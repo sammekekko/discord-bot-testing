@@ -1,11 +1,9 @@
 const Discord = require("discord.js");
 const utilityHandler = require("./utilities/utilityHandler.js");
-// const { REST } = require("@discordjs/rest");
-// const { Routes } = require("discord-api-types/v9");
-// const fs = require("fs");
 const { Player } = require("discord-player");
+const fs = require("fs");
 
-const TOKEN = process.env.TOKEN;
+const TOKEN = 'OTY1Mjg0NDEzNzU3ODU3Nzky.GXg0yB.XiUuPPvmX9yV0ZA9O4AahzprZBoSYwrp89vWmI';
 
 const LOAD_SLASH = process.argv[2] == "load";
 
@@ -19,6 +17,7 @@ const client = new Discord.Client({
 });
 
 client.slashcommands = new Discord.Collection();
+
 client.player = new Player(client, {
     ytdlOptions: {
         quality: "highestaudio",
@@ -26,37 +25,17 @@ client.player = new Player(client, {
     }
 });
 
+let commands = []
 
-// Initializing SlashCommandBuilder
-
-// let commands = []
-
-// const slashFiles = fs.readdirSync("./slash").filter(file => file.endsWith(".js"))
-// for (const file of slashFiles) {
-//     const slashcmd = require(`./slash/${file}`)
-//     client.slashcommands.set(slashcmd.data.name, slashcmd)
-//     if (LOAD_SLASH) commands.push(slashcmd.data.toJSON())
-// }
+const slashFiles = fs.readdirSync(`./slash`).filter(file => file.endsWith(".js"))
+for (const file of slashFiles) {
+    const slashcmd = require(`./slash/${file}`);
+    client.slashcommands.set(slashcmd.data.name, slashcmd);
+    if (LOAD_SLASH) { commands.push(slashcmd.data.toJSON()); }
+}
 
 if (LOAD_SLASH) {
-    // const rest = new REST({
-    //     version: "9"
-    // }).setToken(TOKEN)
-    // console.log("Deploying slash commands")
-    // rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
-    //         body: commands
-    //     })
-    //     .then(() => {
-    //         console.log("Successfully loaded")
-    //         process.exit(0)
-    //     })
-    //     .catch((err) => {
-    //         if (err) {
-    //             console.log(err)
-    //             process.exit(1)
-    //         }
-    //     })
-    utilityHandler.loadCommands(client);
+    utilityHandler.loadCommands(commands);
 } else { 
     client.on("ready", () => {
         utilityHandler.readyEvents(client);

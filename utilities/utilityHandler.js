@@ -1,12 +1,11 @@
 const eventListeners = require("./eventListeners.js");
 const { REST } = require("@discordjs/rest");
-const fs = require("fs");
 const { Routes } = require("discord-api-types/v9");
-const path = require('path');
 
-const TOKEN = process.env.TOKEN;
+const TOKEN = 'OTY1Mjg0NDEzNzU3ODU3Nzky.GXg0yB.XiUuPPvmX9yV0ZA9O4AahzprZBoSYwrp89vWmI';
 const CLIENT_ID = "965284413757857792";
 const GUILD_ID = "802508650085744641";
+
 
 module.exports.ready = async (client) => {
     console.log("---------------------");
@@ -22,17 +21,7 @@ module.exports.readyEvents = async (client) => {
     eventListeners.registerEvents(client);
 }
 
-module.exports.loadCommands = async (client) => {
-    let commands = []
-    let parentDirectory = path.dirname(module.parent.filename);
-
-    const slashFiles = fs.readdirSync(`${parentDirectory}/slash`).filter(file => file.endsWith(".js"))
-    for (const file of slashFiles) {
-        const slashcmd = require(`${parentDirectory}/slash/${file}`);
-        client.slashcommands.set(slashcmd.data.name, slashcmd);
-        commands.push(slashcmd.data.toJSON());
-    }
-
+module.exports.loadCommands = async (commands) => {
     const rest = new REST({
         version: "9"
     }).setToken(TOKEN);
