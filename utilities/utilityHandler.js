@@ -23,17 +23,17 @@ module.exports.readyEvents = async (client) => {
 module.exports.loadCommands = async (client) => {
     let commands = []
 
-    const slashFiles = fs.readdirSync("./slash").filter(file => file.endsWith(".js"))
+    const slashFiles = fs.readdirSync(__dirname + "/slash").filter(file => file.endsWith(".js"))
     for (const file of slashFiles) {
-        const slashcmd = require(`./slash/${file}`)
-        client.slashcommands.set(slashcmd.data.name, slashcmd)
-        if (LOAD_SLASH) commands.push(slashcmd.data.toJSON())
+        const slashcmd = require(`${__dirname}./slash/${file}`);
+        client.slashcommands.set(slashcmd.data.name, slashcmd);
+        if (LOAD_SLASH) { commands.push(slashcmd.data.toJSON()); }
     }
 
     const rest = new REST({
         version: "9"
-    }).setToken(TOKEN)
-    console.log("Deploying slash commands")
+    }).setToken(TOKEN);
+    console.log("Deploying slash commands");
     rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
             body: commands
         })
