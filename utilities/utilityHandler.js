@@ -29,7 +29,7 @@ module.exports.loadCommands = async (client) => {
     for (const file of slashFiles) {
         const slashcmd = require(`${parentDirectory}/slash/${file}`);
         client.slashcommands.set(slashcmd.data.name, slashcmd);
-        if (LOAD_SLASH) { commands.push(slashcmd.data.toJSON()); }
+        commands.push(slashcmd.data.toJSON());
     }
 
     const rest = new REST({
