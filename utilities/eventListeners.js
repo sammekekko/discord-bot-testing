@@ -9,7 +9,7 @@ module.exports.registerEvents = async (client) => {
     client.on("interactionCreate", (interaction) => {
 
         if (interaction.isButton()) {
-            async () => {
+            async function handleButton() {
                const buttonID = interaction.customId;
                if (! buttonID == "gayprocent") { await interaction.reply("Error i koden"); } 
 
@@ -18,8 +18,9 @@ module.exports.registerEvents = async (client) => {
                await interaction.deferReply();
                await interaction.reply(`Du är ${randomProcentage.toString()}%`);
             }
+            handleButton();
         } else if (interaction.isCommand()) {
-            async () => {
+            async function handleCommand() {
                 const slashcmd = client.slashcommands.get(interaction.commandName);
                 if (!slashcmd) interaction.reply("Nu hände det nå jävla konstigt här va");
     
@@ -29,6 +30,7 @@ module.exports.registerEvents = async (client) => {
                     interaction
                 });
             }
+            handleCommand();
         }
     });
 
