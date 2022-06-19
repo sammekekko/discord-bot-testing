@@ -14,7 +14,7 @@ module.exports = {
 
 		if (!queue.connection) { await queue.connect(interaction.member.voice.channel); }
 
-		let embed = new MessageEmbed()
+		let embed = new MessageEmbed();
 
         let input = interaction.options.getString("input");
 

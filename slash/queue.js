@@ -23,7 +23,7 @@ module.exports = {
             return `**${page * 10 + i + 1}.** \`[${song.duration}]\` ${song.title} -- <@${song.requestedBy.id}>`
         }).join("\n")
 
-        const currentSong = queue.current
+        const currentSong = queue.current;
 
         await interaction.editReply({
             embeds: [
