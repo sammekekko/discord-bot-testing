@@ -25,7 +25,7 @@ module.exports.loadCommands = async (client) => {
 
     const slashFiles = fs.readdirSync(`${__dirname}/../slash`).filter(file => file.endsWith(".js"))
     for (const file of slashFiles) {
-        const slashcmd = require(`../slash/${file}`);
+        const slashcmd = require(`${__dirname}/../slash/${file}`);
         client.slashcommands.set(slashcmd.data.name, slashcmd);
         if (LOAD_SLASH) { commands.push(slashcmd.data.toJSON()); }
     }
