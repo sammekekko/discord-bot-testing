@@ -2,7 +2,7 @@ const eventListeners = require("./eventListeners.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
-const TOKEN = 'OTY1Mjg0NDEzNzU3ODU3Nzky.GXg0yB.XiUuPPvmX9yV0ZA9O4AahzprZBoSYwrp89vWmI';
+const TOKEN = process.env.TOKEN;
 const CLIENT_ID = "965284413757857792";
 const GUILD_ID = "802508650085744641";
 
