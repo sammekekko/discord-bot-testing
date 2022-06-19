@@ -15,7 +15,7 @@ module.exports.registerEvents = async (client) => {
 
                const randomProcentage = Math.floor(Math.random() * 100) + 1;
 
-               await interaction.reply(`@<${interaction.user.tag}> Du är ${randomProcentage.toString()}% bög, gode gay`);
+               await interaction.reply(`<@${interaction.user.id}> Du är ${randomProcentage.toString()}% bög, gode gay`);
             }
             handleButton();
         } else if (interaction.isCommand()) {
