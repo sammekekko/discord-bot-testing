@@ -8,7 +8,6 @@ data: new SlashCommandBuilder()
     .setDescription("Vad kan man göra på denna server?"),
 
 	run: async ({ client, interaction }) => {
-        await interaction.deferReply();
         const buttons = new MessageActionRow()
             .addComponents(
                 new MessageButton()

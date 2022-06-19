@@ -15,7 +15,6 @@ module.exports.registerEvents = async (client) => {
 
                const randomProcentage = Math.random(101);
 
-               await interaction.deferReply();
                await interaction.reply(`Du är ${randomProcentage.toString()}%`);
             }
             handleButton();
