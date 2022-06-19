@@ -2,6 +2,7 @@ const eventListeners = require("./eventListeners.js");
 const { REST } = require("@discordjs/rest");
 const fs = require("fs");
 const { Routes } = require("discord-api-types/v9");
+const path = require('path');
 
 const CLIENT_ID = "965284413757857792";
 const GUILD_ID = "802508650085744641";
@@ -22,10 +23,11 @@ module.exports.readyEvents = async (client) => {
 
 module.exports.loadCommands = async (client) => {
     let commands = []
+    let parentDirectory = path.dirname(module.parent.filename);
 
-    const slashFiles = fs.readdirSync(`${__dirname}/./slash`).filter(file => file.endsWith(".js"))
+    const slashFiles = fs.readdirSync(`${parentDirectory}/slash`).filter(file => file.endsWith(".js"))
     for (const file of slashFiles) {
-        const slashcmd = require(`${__dirname}/./slash/${file}`);
+        const slashcmd = require(`${parentDirectory}/slash/${file}`);
         client.slashcommands.set(slashcmd.data.name, slashcmd);
         if (LOAD_SLASH) { commands.push(slashcmd.data.toJSON()); }
     }
