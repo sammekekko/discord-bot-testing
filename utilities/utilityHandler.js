@@ -4,6 +4,7 @@ const fs = require("fs");
 const { Routes } = require("discord-api-types/v9");
 const path = require('path');
 
+const TOKEN = process.env.TOKEN;
 const CLIENT_ID = "965284413757857792";
 const GUILD_ID = "802508650085744641";
 
